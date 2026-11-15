@@ -11,6 +11,8 @@ static GtFont _titleFont;
 static GtTextCache _textCache;
 static GtText _quickText;
 static GtText _foxText;
+static uint16_t _frames;
+static const uint8_t _bcdScore[] = { 0x00, 0x42, 0x50 };
 
 static void halt() {
     while (1) {
@@ -33,7 +35,12 @@ void main() {
         gt_font_draw(&_titleFont, 4, 72, "!\"#$%&'()*+,-./");
         gt_text_draw(&_quickText, 4, 88);
         gt_text_draw(&_foxText, 4, 96);
-        gt_font_draw_char(&_titleFont, 120, 112, '?');
+        gt_font_draw_char(&_titleFont, 120, 56, '?');
+        gt_font_draw_u16(&_titleFont, 4, 106, _frames, 5, '0');      // 00123
+        gt_font_draw_u16(&_titleFont, 64, 106, _frames, 5, ' ');     //   123
+        gt_font_draw_u8(&_titleFont, 4, 116, 7, 3, '0');             // 007
+        gt_font_draw_bcd(&_titleFont, 48, 116, _bcdScore, 3, ' ');   //   4250
+        ++_frames;
         await_drawing();
         await_vsync(1);
         flip_pages();

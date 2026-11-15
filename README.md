@@ -16,6 +16,8 @@ Each is packaged as GameTank .bin files and .bmp's for the gametank-sdk.
 
 Define `GT_NO_FONT8` or `GT_NO_FONT6` project-wide to exclude unneeded code if only a single size is being used (llvm-mos dead code prunes, cc65/ca65 do not).
 
+**NOTE**: The fonts marked MIT are permissively licensed and free to use, the other fonts are for inspiration.
+
 🤖 This SDK was created inpart by AI.
 
 ## Fonts
